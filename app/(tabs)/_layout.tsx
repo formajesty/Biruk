@@ -7,7 +7,7 @@ import cn from "clsx";
 
 const TabBarIcon = ({ focused, icon, title }: TabBarIconProps) => (
     <View className="tab-icon">
-        <Image source={icon} className="size-5" resizeMode="contain" tintColor={focused ? '#FE8C00' : '#5D5F6D'} />
+        <Image source={icon} className="size-7" resizeMode="contain" tintColor={focused ? '#FE8C00' : '#5D5F6D'} />
         <Text className={cn('text-sm font-bold', focused ? 'text-primary':'text-gray-200')}>
             {title}
         </Text>
@@ -31,7 +31,7 @@ export default function TabLayout() {
                 marginHorizontal: 20,
                 height: 80,
                 position: 'absolute',
-                bottom: 40,
+                bottom: 30,
                 backgroundColor: 'white',
                 shadowColor: '#1a1a1a',
                 shadowOffset: { width: 0, height: 2 },

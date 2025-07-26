@@ -1,19 +1,30 @@
-import {View, Text, TouchableOpacity, Image} from 'react-native'
+import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native'
 import React from 'react'
-import {images} from "@/constants";
+import {CustomButtonProps} from "@/type";
+import cn from "clsx";
 
-const CartButton = () => {
-    const totalItems = 10;
+const CustomButton = ({
+                          onPress,
+                          title="Click Me",
+                          style,
+                          textStyle,
+                          leftIcon,
+                          isLoading = false
+                      }: CustomButtonProps) => {
     return (
-        <TouchableOpacity className='cart-btn' onPress={()=>{}}>
-            <Image source={images.bag} className='size-5' resizeMode='contain'/>
-            {totalItems > 0 && (
-                <View className='cart-badge'>
-                    <Text className='small-bold text-white'>{totalItems}</Text>
-                </View>
-            )}
+        <TouchableOpacity className={cn('custom-btn', style)} onPress={onPress}>
+            {leftIcon}
 
+            <View className="flex-center flex-row">
+                {isLoading ? (
+                    <ActivityIndicator size="small" color="white" />
+                ): (
+                    <Text className={cn('text-white-100 paragraph-semibold', textStyle)}>
+                        {title}
+                    </Text>
+                )}
+            </View>
         </TouchableOpacity>
     )
 }
-export default CartButton
+export default CustomButton
